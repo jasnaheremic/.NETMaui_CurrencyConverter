@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="KonverterValuta.View.MainPage">
+
+    <ScrollView>
+
+        <VerticalStackLayout
+            Spacing="25"
+            Padding="30,0"
+            VerticalOptions="Center">
+
+            <Entry
+                Placeholder="Amount"
+                Keyboard="Numeric"
+                Text="{Binding Amount}"
+                PlaceholderColor="Gray"/>
+
+            <Picker 
+                x:Name="currencyPicker"
+                Title="Choose your currency!"
+                ItemsSource="{Binding CurrenciesFull}"
+                ItemDisplayBinding="{Binding .}"
+                SelectedItem="{Binding SelectedCurrency}"
+            />
+            
+            <Picker 
+                x:Name="currencyConvert"
+                Title="Choose currency you want to convert into!"
+                ItemsSource="{Binding CurrenciesFull}"
+                ItemDisplayBinding="{Binding .}"
+                SelectedItem="{Binding SelectedConvert}"
+            />
+
+            <Label 
+                Text="{Binding ConvertedAmount}"
+                HorizontalTextAlignment="Center"
+                VerticalTextAlignment="Center"
+                TextColor="Black"
+                FontAttributes="Bold"
+                />
+
+            <Button
+                Command="{Binding CheckInternetCommand}"
+                Text="Konvertuj"/>
+        </VerticalStackLayout>
+        
+    </ScrollView>
+
+</ContentPage>
